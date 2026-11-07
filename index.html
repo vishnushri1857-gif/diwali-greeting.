@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090713">
+<meta name="description" content="Celebrate Diwali with glowing moments, the meaning of the festival, cherished traditions and personalised greetings in English and Tamil.">
+<meta name="color-scheme" content="dark">
+<title>Diwali — Festival of Lights</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:wght@400;500;700&family=Noto+Sans+Tamil:wght@400;500;700&display=swap');
+:root{--night:#090713;--gold:#ffd47b;--amber:#ff9e42;--cream:#fff5dc;--muted:#cbbbd1;--serif:'Cormorant Garamond','Noto Sans Tamil',Georgia,serif;--sans:'DM Sans','Noto Sans Tamil',system-ui,sans-serif}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+[hidden]{display:none!important}
+html,body{margin:0;background:var(--night);color:var(--cream);font-family:var(--sans)}
+body{overflow-x:hidden}body.lock{overflow:hidden}
+button,input,textarea{font:inherit;color:inherit}button{cursor:pointer}
+svg .fl{transform-box:fill-box;transform-origin:50% 100%;animation:fl .18s ease-in-out infinite alternate}
+@keyframes fl{to{transform:scale(1.06,1.1) rotate(3deg)}}
+
+/* ---------- intro + greeting ---------- */
+#fx{position:fixed;inset:0;z-index:26;pointer-events:none}#fx.ambient{z-index:1;opacity:.55}
+#intro,#greet{position:fixed;inset:0;display:grid;place-items:center;overflow:hidden;text-align:center;transition:opacity 1.2s ease,visibility 1.2s ease}
+#intro{z-index:40;background:radial-gradient(ellipse at 50% 85%,#7a2f4e 0,#2a1238 42%,#07040d 88%)}
+#greet{z-index:25;background:radial-gradient(ellipse at 50% 55%,#8a3350 0,#2b1238 46%,#06040c 92%)}
+.gone{opacity:0;visibility:hidden}
+.spin{position:absolute;left:50%;top:50%;width:min(130vw,980px);aspect-ratio:1;transform:translate(-50%,-50%);opacity:.32;animation:spin 70s linear infinite;pointer-events:none}
+.spin svg{width:100%;height:100%}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.pt{position:absolute;bottom:-20px;border-radius:50%;background:#ffd47b;box-shadow:0 0 14px #ffb23f;animation:rise linear infinite;opacity:.9}
+@keyframes rise{to{transform:translateY(-110vh) translateX(30px);opacity:0}}
+.intro-in,.greet-in{position:relative;z-index:2;padding:24px;max-width:960px}
+.kicker{font-size:11px;letter-spacing:.45em;color:#f3c978;text-transform:uppercase;animation:fadeUp 1.2s both}
+.intro-title{display:flex;justify-content:center;font:700 clamp(70px,21vw,200px)/1 var(--serif);margin:20px 0 6px}
+.intro-title span{color:#3a2a3f;animation:lit 1s forwards;animation-delay:calc(var(--i)*.28s + .4s)}
+@keyframes lit{to{color:#ffe4a1;text-shadow:0 0 14px #ffb23f,0 0 50px #ff9e42aa}}
+.intro-sub{color:#e6d3e6;font-size:14px;letter-spacing:.14em;animation:fadeUp 1.2s .6s both}
+.dyrow{display:flex;gap:clamp(12px,3vw,28px);justify-content:center;margin:30px 0 20px}
+.dy{position:relative;width:46px;height:42px}
+.dy i{position:absolute;left:50%;top:0;width:13px;height:24px;margin-left:-6px;border-radius:55% 45% 55% 45%;background:radial-gradient(ellipse at 50% 75%,#fff 0 8%,#fff2a6 25%,#ffad32 60%,#ff5b27 78%,transparent 80%);transform:scale(0);transform-origin:50% 100%;animation:ignite .6s forwards,flick .16s infinite alternate;animation-delay:calc(var(--i)*.35s + 1s),calc(var(--i)*.35s + 1.7s);filter:drop-shadow(0 0 10px #ffb23f)}
+.dy b{position:absolute;bottom:0;left:0;width:100%;height:21px;border-radius:5px 5px 30px 30px;background:linear-gradient(#ffdc86,#a94727 75%,#4b1b2b)}
+@keyframes ignite{to{transform:scale(1)}}@keyframes flick{from{transform:scale(1) rotate(-3deg)}to{transform:scale(1.08,1.12) rotate(3deg)}}
+.progress{height:2px;width:170px;background:#ffffff22;margin:6px auto 0;overflow:hidden}
+.progress:after{content:"";display:block;width:0;height:100%;background:var(--gold);box-shadow:0 0 12px var(--gold);animation:load 5s ease-in-out forwards}
+@keyframes load{to{width:100%}}
+.skip{margin-top:22px;background:none;border:0;color:#e2cfe6;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:scale(.6) translateY(30px)}to{opacity:1;transform:none}}
+.g-kicker{letter-spacing:.5em;font-size:12px;color:var(--gold);text-transform:uppercase;animation:fadeUp 1s both}
+.g-happy{font:600 clamp(34px,9vw,86px)/1 var(--serif);letter-spacing:.35em;margin:22px 0 4px .35em;color:#fff0c8;text-shadow:0 0 30px #ffb54766;animation:pop 1s .3s both}
+.g-diwali{font:700 clamp(84px,26vw,270px)/.95 var(--serif);background:linear-gradient(100deg,#ffd47b,#fff4c4 30%,#ff9e42 55%,#ffd47b 80%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:pop 1.2s .6s both,shine 4s linear infinite;filter:drop-shadow(0 8px 40px #ff9e4266)}
+@keyframes shine{to{background-position:-250% 0}}
+.g-ta{font:600 clamp(20px,4.8vw,38px)/1.5 var(--serif);color:#ffe4a5;margin-top:10px;animation:fadeUp 1.2s 1.2s both}
+.g-msg{max-width:560px;margin:12px auto 0;color:#e8d6e8;line-height:1.8;font-size:15px;animation:fadeUp 1.2s 1.5s both}
+.lan{position:absolute;top:-6px;width:clamp(60px,13vw,120px);transform-origin:50% 0;animation:swing 4.2s ease-in-out infinite;z-index:1}
+.lan svg{width:100%;display:block;filter:drop-shadow(0 0 18px #ffb23f88)}
+@keyframes swing{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
+.btn{border:1px solid #ffd47b66;border-radius:40px;padding:14px 24px;background:#ffffff0d;color:var(--cream);font-size:12px;letter-spacing:.1em;text-transform:uppercase;transition:.3s;backdrop-filter:blur(12px)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 35px #ffb74736;border-color:var(--gold)}
+.btn.gold{background:linear-gradient(120deg,#ffe6a1,#f5a849);color:#29132b;border:0;font-weight:700;box-shadow:0 8px 30px #ffad4240}
+.btn:disabled{opacity:.35;cursor:not-allowed;transform:none;box-shadow:none}
+.g-btn{margin-top:30px;animation:fadeUp 1.2s 1.9s both}
+
+/* ---------- app shell ---------- */
+#app{position:relative;z-index:2;min-height:100vh;padding-bottom:120px;animation:fadeUp 1s both}
+.top{position:sticky;top:0;z-index:12;display:flex;justify-content:space-between;align-items:center;padding:14px clamp(16px,5vw,64px);background:#090713c4;backdrop-filter:blur(16px);border-bottom:1px solid #ffffff14}
+.logo{font:700 24px var(--serif);letter-spacing:.14em;color:var(--gold)}.logo span{color:#fff2d6}
+.langseg{display:flex;background:#ffffff12;border:1px solid #ffd47b44;border-radius:30px;padding:3px}
+.langseg button{background:none;border:0;border-radius:26px;padding:7px 14px;font-size:12px;color:#ead9ea}
+.langseg button.on{background:linear-gradient(120deg,#ffe6a1,#f5a849);color:#29132b;font-weight:700}
+.view{display:none;max-width:1200px;margin:auto;padding:30px clamp(16px,5vw,64px) 30px}
+.view.active{display:block;animation:fadeUp .5s both}
+.page-head{text-align:center;max-width:680px;margin:0 auto 30px}
+.page-head h2{font:600 clamp(36px,7vw,62px)/1.05 var(--serif);margin:0 0 10px;color:#fff0c8}
+.page-head p{margin:0;color:var(--muted);font-size:14px;line-height:1.7}
+.page-head:before{content:"✦ ✦ ✦";display:block;color:var(--gold);letter-spacing:.5em;font-size:11px;margin-bottom:12px}
+.bar{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:15;display:flex;gap:4px;padding:7px;border-radius:28px;background:#150d22e0;backdrop-filter:blur(20px);border:1px solid #ffd47b44;box-shadow:0 14px 50px #000a;width:min(580px,calc(100% - 20px))}
+.bar button{flex:1;background:none;border:0;color:#cbbbd1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 2px;border-radius:20px;font-size:11px;transition:.25s}
+.bar button .ic{font-size:21px;line-height:1}
+.bar button.on{background:linear-gradient(120deg,#ffe6a1,#f5a849);color:#29132b;font-weight:700;box-shadow:0 6px 22px #ffad4240}
+.bar button:not(.on):hover{color:var(--gold)}
+
+/* tiles + cards */
+.grid-moments{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+.tile{position:relative;aspect-ratio:1;border-radius:18px;overflow:hidden;border:1px solid #ffd47b3a;padding:0;background:#150d22;box-shadow:0 12px 30px #0006;transition:transform .35s,box-shadow .35s}
+.tile:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 20px 44px #ffb34730}
+.tile svg,.tile img,.pic svg,.pic img{width:100%;height:100%;display:block;object-fit:cover}
+.tile .cap{position:absolute;left:0;right:0;bottom:0;padding:30px 12px 11px;background:linear-gradient(transparent,#090713f0);font:600 18px/1.2 var(--serif);text-align:left;color:#fff2d5}
+.feed{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
+.card{border-radius:20px;overflow:hidden;background:linear-gradient(145deg,#ffffff14,#ffffff05);border:1px solid #f4d18a35;box-shadow:0 14px 40px #0004}
+.card .pic{aspect-ratio:16/10;background:#150d22}
+.card .body{padding:16px 18px 20px}
+.card h3{font:600 26px var(--serif);color:var(--gold);margin:0 0 8px}
+.card p{margin:0;font-size:14px;line-height:1.8;color:#e0d1e4}
+
+/* modal */
+#modal{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:16px;background:#05030bcc;backdrop-filter:blur(10px);transition:opacity .3s,visibility .3s}
+.mpanel{position:relative;width:min(560px,100%);max-height:calc(100vh - 32px);overflow:auto;border-radius:24px;background:#1a0f29;border:1px solid #ffd47b55;box-shadow:0 30px 90px #000}
+.mpic{aspect-ratio:16/11;background:#150d22}.mpic svg,.mpic img{width:100%;height:100%;display:block;object-fit:cover}
+.mbody{padding:18px 22px 22px}.mbody h3{font:600 32px var(--serif);color:var(--gold);margin:14px 0 8px}.mbody p{font-size:15px;line-height:1.85;color:#eadcee;margin:0}
+.mx{position:absolute;top:12px;right:12px;z-index:2;width:38px;height:38px;border-radius:50%;border:1px solid #ffffff44;background:#090713aa;font-size:16px}
+.mnav{display:flex;justify-content:space-between;align-items:center;margin-top:18px;color:var(--muted);font-size:12px}
+.mnav button{width:42px;height:42px;border-radius:50%;border:1px solid #ffd47b66;background:#ffffff0d;font-size:20px}
+
+/* wish */
+.send-wrap{max-width:720px;margin:auto;padding:clamp(20px,5vw,42px);border:1px solid #f4d18a55;border-radius:25px;background:linear-gradient(145deg,#ffffff14,#ffffff06);box-shadow:0 25px 80px #0005}
+.tabs{display:flex;gap:10px;margin-bottom:24px}
+.tab{flex:1;padding:14px;border-radius:14px;border:1px solid #f4d18a55;color:#f7e5c2;background:#ffffff08;font-size:13px;letter-spacing:.06em}
+.tab.active{background:linear-gradient(120deg,#ffe6a1,#f5a849);color:#29132b;border-color:transparent;font-weight:700}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.field{display:flex;flex-direction:column;gap:8px}.field.full{grid-column:1/-1}
+.field label{font-size:11px;letter-spacing:.1em;color:#f5ce80;text-transform:uppercase}
+.field input,.field textarea{width:100%;border:1px solid #f4d18a55;border-radius:12px;padding:14px;background:#0d0919c9;color:#fff3dc;outline:none}
+.field input:focus,.field textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px #ffd47b17}
+.field textarea{min-height:110px;resize:vertical}
+.send-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}.send-actions .btn{flex:1;min-width:150px}
+.status{font-size:13px;color:var(--gold);min-height:18px;margin-top:14px;line-height:1.6}
+.hint{font-size:12px;color:var(--muted);line-height:1.7;margin:10px 0 0}
+.poster-wrap{margin:26px auto 0;text-align:center;animation:fadeUp .6s both}
+.poster-wrap canvas{width:100%;max-width:440px;border-radius:16px;border:1px solid #ffd47b66;box-shadow:0 20px 60px #000a}
+.poster-wrap .row{display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+
+#toast{position:fixed;left:50%;bottom:104px;transform:translateX(-50%);z-index:60;background:#1a0f29;border:1px solid #ffd47b88;border-radius:16px;padding:12px 18px;font-size:13px;max-width:min(420px,90vw);text-align:center;transition:.3s}
+footer{text-align:center;padding:20px;color:#bba9c5;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+@media(max-width:560px){.formgrid{grid-template-columns:1fr}.cover{aspect-ratio:4/3}.scene .pic{aspect-ratio:16/10}.bar button{font-size:10px}.logo{font-size:20px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}}
+
+
+/* ---------- premium glass + glow + touch interactions ---------- */
+:root{
+  --glass:rgba(255,255,255,.075);
+  --glass-strong:rgba(255,255,255,.115);
+  --glass-line:rgba(255,220,151,.28);
+  --glow:rgba(255,180,71,.28);
+  --glow-hot:rgba(255,212,123,.48);
+}
+html{scroll-behavior:smooth}
+body{
+  background:
+    radial-gradient(ellipse at 12% 12%,rgba(117,47,104,.22),transparent 36%),
+    radial-gradient(ellipse at 88% 45%,rgba(155,75,42,.14),transparent 34%),
+    var(--night);
+}
+/* Glass surfaces */
+.top,.bar,.send-wrap,.card,.mpanel,.langseg,.tabs,.field input,.field textarea,
+.mx,.mnav button,.btn,.tab,.tile,#toast{
+  -webkit-backdrop-filter:blur(20px) saturate(145%);
+  backdrop-filter:blur(20px) saturate(145%);
+}
+.top{
+  background:linear-gradient(110deg,rgba(18,10,30,.82),rgba(38,19,43,.68));
+  border-bottom:1px solid rgba(255,220,151,.2);
+  box-shadow:0 8px 30px rgba(0,0,0,.2),0 1px 0 rgba(255,255,255,.035) inset;
+}
+.bar{
+  background:linear-gradient(135deg,rgba(42,23,53,.82),rgba(15,10,27,.88));
+  border:1px solid rgba(255,218,145,.38);
+  box-shadow:0 18px 55px rgba(0,0,0,.48),0 0 26px rgba(255,174,65,.12),inset 0 1px 0 rgba(255,255,255,.12);
+}
+.card,.send-wrap,.mpanel{
+  position:relative;
+  isolation:isolate;
+  background:linear-gradient(145deg,rgba(255,255,255,.13),rgba(255,255,255,.035) 58%,rgba(255,180,71,.045));
+  border:1px solid var(--glass-line);
+  box-shadow:0 18px 48px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.12),0 0 22px rgba(255,181,78,.055);
+}
+.card:before,.send-wrap:before,.mpanel:before,.tile:before{
+  content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;z-index:2;
+  background:linear-gradient(125deg,rgba(255,255,255,.16),transparent 24%,transparent 72%,rgba(255,205,126,.07));
+  opacity:.7;
+}
+.card:after,.send-wrap:after{
+  content:"";position:absolute;inset:-1px;border-radius:inherit;pointer-events:none;z-index:-1;
+  box-shadow:0 0 22px rgba(255,177,72,.10);transition:box-shadow .35s ease;
+}
+.card{overflow:hidden;transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .35s,box-shadow .35s;}
+.card .pic{position:relative;overflow:hidden}
+.card .pic:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 58%,rgba(12,7,20,.25));pointer-events:none}
+.card .pic img,.card .pic svg{transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .5s}
+.card .body{position:relative;z-index:3}
+.card h3{text-shadow:0 0 18px rgba(255,190,91,.18)}
+.tile{border:1px solid rgba(255,215,140,.36);box-shadow:0 14px 35px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.14);}
+.tile:after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),0 0 22px rgba(255,180,71,.12);opacity:.8}
+/* Soft animated glow around interactive surfaces */
+@keyframes warmPulse{0%,100%{box-shadow:0 0 0 rgba(255,190,91,0),0 0 18px rgba(255,190,91,.08)}50%{box-shadow:0 0 0 1px rgba(255,212,123,.12),0 0 27px rgba(255,175,66,.2)}}
+.btn,.tab,.bar button,.langseg button,.mx,.mnav button,.skip{position:relative;overflow:hidden;transition:transform .22s ease,box-shadow .28s ease,border-color .28s ease,background .28s ease;}
+.btn:not(:disabled),.tab,.bar button,.langseg button{touch-action:manipulation}
+.btn:before,.tab:before,.bar button:before,.langseg button:before{
+  content:"";position:absolute;top:-80%;left:-55%;width:38%;height:260%;
+  transform:rotate(28deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);
+  transition:left .65s ease;pointer-events:none;
+}
+.btn:hover:before,.tab:hover:before,.bar button:hover:before,.langseg button:hover:before{left:130%}
+.btn:focus-visible,.tab:focus-visible,.bar button:focus-visible,.langseg button:focus-visible,
+.mx:focus-visible,.mnav button:focus-visible,.skip:focus-visible{
+  outline:2px solid var(--gold);outline-offset:3px;box-shadow:0 0 0 5px rgba(255,212,123,.15),0 0 24px var(--glow-hot);
+}
+.btn:hover,.tab:hover,.mx:hover,.mnav button:hover{border-color:rgba(255,222,155,.8);box-shadow:0 8px 28px rgba(255,173,66,.2),inset 0 1px 0 rgba(255,255,255,.15)}
+.btn:active,.tab:active,.bar button:active,.langseg button:active,.mx:active,.mnav button:active,.skip:active{
+  transform:scale(.95);filter:brightness(1.12);
+}
+.btn.gold{box-shadow:0 9px 28px rgba(255,173,66,.25),inset 0 1px 0 rgba(255,255,255,.45)}
+.btn.gold:hover{box-shadow:0 12px 34px rgba(255,173,66,.42),0 0 24px rgba(255,212,123,.2)}
+.langseg{background:rgba(255,255,255,.075);border:1px solid rgba(255,212,123,.34);box-shadow:inset 0 1px 0 rgba(255,255,255,.1)}
+.langseg button.on,.bar button.on,.tab.active{box-shadow:0 5px 20px rgba(255,173,66,.28),inset 0 1px 0 rgba(255,255,255,.5)}
+.field input,.field textarea{background:rgba(9,6,19,.62);border-color:rgba(255,215,140,.28);transition:border-color .25s,box-shadow .25s,background .25s}
+.field input:hover,.field textarea:hover{border-color:rgba(255,212,123,.55)}
+.field input:focus,.field textarea:focus{background:rgba(15,9,27,.88);border-color:var(--gold);box-shadow:0 0 0 3px rgba(255,212,123,.12),0 0 22px rgba(255,174,65,.13)}
+/* Desktop hover glow; mobile gets a satisfying pressed state */
+@media (hover:hover) and (pointer:fine){
+  .card:hover{transform:translateY(-7px);border-color:rgba(255,220,151,.62);box-shadow:0 25px 58px rgba(0,0,0,.42),0 0 30px rgba(255,177,72,.16),inset 0 1px 0 rgba(255,255,255,.16)}
+  .card:hover:after{box-shadow:0 0 30px rgba(255,177,72,.2)}
+  .card:hover .pic img,.card:hover .pic svg{transform:scale(1.045);filter:saturate(1.08)}
+  .tile:hover{transform:translateY(-7px) scale(1.025);border-color:rgba(255,225,165,.8);box-shadow:0 24px 48px rgba(0,0,0,.42),0 0 30px rgba(255,177,72,.24)}
+  .send-wrap:hover{border-color:rgba(255,220,151,.48);box-shadow:0 25px 80px rgba(0,0,0,.42),0 0 28px rgba(255,177,72,.1),inset 0 1px 0 rgba(255,255,255,.14)}
+  .bar button:not(.on):hover{background:rgba(255,255,255,.075);box-shadow:inset 0 0 0 1px rgba(255,212,123,.16),0 0 18px rgba(255,177,72,.1)}
+}
+@media (hover:none){
+  .card:active,.tile:active{transform:scale(.975);border-color:rgba(255,222,155,.82);box-shadow:0 8px 28px rgba(0,0,0,.4),0 0 25px rgba(255,177,72,.24)}
+  .card:active .pic img,.tile:active img{transform:scale(1.025)}
+  .btn:active,.tab:active,.bar button:active,.langseg button:active{box-shadow:0 0 0 3px rgba(255,212,123,.12),0 0 22px rgba(255,177,72,.22)}
+}
+@media(max-width:560px){
+  .feed{grid-template-columns:1fr;gap:17px}
+  .card{border-radius:19px}
+  .card .body{padding:15px 16px 18px}
+  .bar{bottom:max(10px,env(safe-area-inset-bottom));padding:6px;}
+  .bar button{min-height:52px}
+  .send-wrap{border-radius:21px}
+}
+@media(prefers-reduced-motion:reduce){
+  .card,.tile,.btn,.tab,.bar button,.langseg button,.mx,.mnav button{transition:none!important}
+  .btn:before,.tab:before,.bar button:before,.langseg button:before{display:none}
+}
+
+
+/* ---------- final publication polish ---------- */
+:root{--focus:rgba(255,212,123,.9)}
+body{min-height:100svh;padding-bottom:env(safe-area-inset-bottom)}
+#app{padding-bottom:calc(112px + env(safe-area-inset-bottom))}
+.view{width:100%}
+.page-head{margin-bottom:clamp(24px,4vw,38px)}
+.page-head h2{letter-spacing:-.015em;text-wrap:balance}
+.page-head p{max-width:56ch;margin-inline:auto;text-wrap:pretty}
+.feed{align-items:stretch;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:clamp(14px,2.2vw,24px)}
+.card{min-width:0;border-radius:22px;display:flex;flex-direction:column}
+.card .pic{aspect-ratio:16/10;flex:none}
+.card .body{flex:1;padding:clamp(16px,2vw,22px)}
+.card h3{line-height:1.15;text-wrap:balance}
+.card p{line-height:1.85;text-wrap:pretty}
+.send-wrap{max-width:820px;margin-inline:auto;padding:clamp(16px,3vw,30px);border-radius:26px}
+.tabs{display:flex;gap:8px;padding:5px;margin-bottom:22px;border:1px solid rgba(255,220,151,.18);border-radius:18px;background:rgba(5,3,13,.25)}
+.tabs .tab{flex:1;min-height:44px;border-radius:13px}
+.field label{display:block;line-height:1.5}
+.field input,.field textarea{min-height:48px}
+.btn{min-height:46px}
+.bar button{min-width:0;min-height:54px}
+.bar button[aria-current="page"]{outline:1px solid rgba(255,255,255,.2);outline-offset:-2px}
+.logo{white-space:nowrap;text-shadow:0 0 22px rgba(255,212,123,.2)}
+#fx{will-change:contents}
+@media(min-width:900px){.view{padding-top:44px}.page-head{margin-bottom:38px}.grid-moments{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:560px){
+  .top{padding:12px 16px;min-height:62px}
+  .view{padding-top:25px}
+  .page-head h2{font-size:clamp(34px,10vw,46px)}
+  .feed{grid-template-columns:1fr}
+  .card .pic{aspect-ratio:16/9}
+  .send-actions{gap:9px}
+  .send-actions .btn{min-width:calc(50% - 5px);padding-inline:12px;font-size:11px}
+  .bar{width:min(560px,calc(100% - 18px));}
+  .bar button .ic{font-size:20px}
+  .bar button span:last-child{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  footer{padding-bottom:calc(22px + env(safe-area-inset-bottom))}
+}
+@media(max-width:360px){.logo{font-size:18px}.langseg button{padding:7px 10px}.bar button{font-size:9px}.bar button .ic{font-size:18px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}#fx{display:none}.spin,.lan,.pt{animation:none!important}}
+
+</style>
+</head>
+<body>
+<canvas id="fx"></canvas>
+
+<!-- OPENING -->
+<div id="intro">
+ <div class="spin" id="spin1"></div>
+ <div class="intro-in">
+  <div class="kicker">A celebration of light • joy • togetherness</div>
+  <h1 class="intro-title"><span style="--i:0">D</span><span style="--i:1">I</span><span style="--i:2">W</span><span style="--i:3">A</span><span style="--i:4">L</span><span style="--i:5">I</span></h1>
+  <div class="intro-sub">Festival of Lights &nbsp;·&nbsp; தீபாவளி</div>
+  <div class="dyrow"><div class="dy" style="--i:0"><i></i><b></b></div><div class="dy" style="--i:1"><i></i><b></b></div><div class="dy" style="--i:2"><i></i><b></b></div><div class="dy" style="--i:3"><i></i><b></b></div><div class="dy" style="--i:4"><i></i><b></b></div></div>
+  <div class="progress"></div>
+  <button class="skip" id="skipBtn">Continue ↗</button>
+ </div>
+</div>
+
+<!-- GRAND GREETING -->
+<div id="greet" class="gone">
+ <div class="spin" id="spin2"></div>
+ <div class="lan" id="lanL" style="left:6%"></div><div class="lan" id="lanR" style="right:6%;animation-delay:-2s"></div>
+ <div class="greet-in">
+  <div class="g-kicker">✦ &nbsp;The Festival of Lights&nbsp; ✦</div>
+  <div class="g-happy">HAPPY</div>
+  <div class="g-diwali">DIWALI</div>
+  <div class="g-ta">இனிய தீபாவளி நல்வாழ்த்துகள்</div>
+  <p class="g-msg">May every diya light up your home, every sweet fill your heart, and every moment bring you joy, health and endless prosperity.</p>
+  <button class="btn gold g-btn" id="enterBtn">Enter the celebration ✨</button>
+ </div>
+</div>
+
+<!-- APP -->
+<div id="app" hidden>
+ <header class="top"><div class="logo">DIWALI <span>✦</span></div>
+  <div class="langseg" id="hSeg" role="group" aria-label="Choose language"><button data-l="en" class="on" aria-pressed="true">English</button><button data-l="ta" aria-pressed="false">தமிழ்</button></div></header>
+ <main>
+  <section class="view active" id="v-moments"><div class="page-head"><h2 data-i="h_moments"></h2><p data-i="s_moments"></p></div><div class="feed" id="gMoments"></div></section>
+  <section class="view" id="v-meaning"><div class="page-head"><h2 data-i="h_meaning"></h2><p data-i="s_meaning"></p></div><div class="feed" id="gMeaning"></div></section>
+  <section class="view" id="v-traditions"><div class="page-head"><h2 data-i="h_traditions"></h2><p data-i="s_traditions"></p></div><div class="feed" id="gTrad"></div></section>
+  <section class="view" id="v-wish">
+   <div class="page-head"><h2 data-i="h_wish"></h2><p data-i="s_wish"></p></div>
+   <div class="send-wrap">
+    <div class="tabs"><button class="tab active" id="tabEmail" data-i="tab_email"></button><button class="tab" id="tabWa" data-i="tab_wa"></button></div>
+    <div class="formgrid">
+     <div class="field"><label for="sender" data-i="l_sender"></label><input id="sender" maxlength="50" data-ph="p_sender"></div>
+     <div class="field"><label for="recipient" data-i="l_to"></label><input id="recipient" maxlength="50" data-ph="p_to"></div>
+     <div class="field full" id="fEmail"><label for="email" data-i="l_email"></label><input id="email" type="email" autocomplete="email" placeholder="name@gmail.com"><label for="cc" style="margin-top:6px" data-i="l_cc"></label><input id="cc" type="text" placeholder="friend@gmail.com, family@gmail.com"></div>
+     <div class="field full" id="fPhone" hidden><label for="phone" data-i="l_phone"></label><input id="phone" type="tel" inputmode="tel" placeholder="+91 98765 43210"></div>
+     <div class="field full"><label for="greeting" data-i="l_msg"></label><textarea id="greeting" maxlength="240" data-ph="p_msg"></textarea></div>
+    </div>
+    <div class="send-actions"><button class="btn" id="previewBtn" type="button" data-i="preview"></button><button class="btn gold" id="sendBtn" disabled data-i="send"></button></div>
+    <div class="status" id="status" aria-live="polite"></div>
+    <p class="hint" id="hint"></p>
+    <div class="poster-wrap" id="posterWrap" hidden>
+     <canvas id="poster" width="1200" height="1500" role="img" aria-label="Preview of your personalised Diwali greeting poster"></canvas>
+     <div class="row"><button class="btn" id="anotherBtn" data-i="another"></button><button class="btn" id="dlBtn" data-i="download"></button></div>
+    </div>
+   </div>
+  </section>
+ </main>
+ <footer>May your days be bright · Your nights be beautiful · Happy Diwali</footer>
+ <nav class="bar" id="bar" aria-label="Main navigation">
+  <button data-tab="moments" class="on" aria-current="page"><span class="ic">🎆</span><span data-i="nav_moments"></span></button>
+  <button data-tab="meaning"><span class="ic">🪔</span><span data-i="nav_meaning"></span></button>
+  <button data-tab="traditions"><span class="ic">🎨</span><span data-i="nav_traditions"></span></button>
+  <button data-tab="wish"><span class="ic">💌</span><span data-i="nav_wish"></span></button>
+ </nav>
+
+<div id="toast" hidden></div>
+
+<!-- ============ SCRIPT 1: art + content (no DOM) ============ -->
+<script id="s1">
+function rng(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const PAL=[['#16082b','#5b1f55','#ff9e42'],['#08102a','#1c3a73','#ffd47b'],['#2b0a1a','#a3203f','#ffc15a'],['#071c1e','#13595a','#ffcf70'],['#1d0a30','#5b2a8a','#ff7ab6'],['#2a1305','#8c3a10','#ffe08a']];
+const D=(x,y,s=1)=>`<g transform="translate(${x} ${y}) scale(${s})"><ellipse cy="-4" rx="72" ry="11" fill="#ffe7a4"/><path d="M-72 -4Q-62 48 0 50Q62 48 72 -4Z" fill="#c4622d"/><path d="M-58 8Q0 26 58 8" stroke="#ffd47b" stroke-width="3" fill="none"/><circle cy="-36" r="46" fill="#ffb23f" opacity=".28"/><path class="fl" d="M0 -80Q-20 -46 -9 -18Q0 -9 9 -18Q20 -46 0 -80Z" fill="#ff9e42"/><path class="fl" d="M0 -58Q-8 -40 -4 -24Q0 -19 4 -24Q8 -40 0 -58Z" fill="#fff3b0"/></g>`;
+const RY=(x,y,n,a,b)=>{let o=`<g stroke="#ffe7a4" opacity=".16" stroke-width="3">`;for(let i=0;i<n;i++){const t=i*2*Math.PI/n;o+=`<line x1="${Math.round(x+Math.cos(t)*a)}" y1="${Math.round(y+Math.sin(t)*a)}" x2="${Math.round(x+Math.cos(t)*b)}" y2="${Math.round(y+Math.sin(t)*b)}"/>`}return o+'</g>'};
+const L=(x,y,s,c)=>`<g transform="translate(${x} ${y}) scale(${s})"><line y1="-400" y2="-40" stroke="#ffd47b" stroke-width="2"/><rect x="-14" y="-42" width="28" height="10" rx="3" fill="#ffd47b"/><path d="M-30 -32Q-48 10 -30 52H30Q48 10 30 -32Z" fill="${c}"/><path d="M0 -32Q-20 10 0 52Q20 10 0 -32" fill="none" stroke="#ffe7a4" stroke-width="2"/><ellipse cy="10" rx="12" ry="20" fill="#fff3b0" opacity=".75"/><rect x="-24" y="52" width="48" height="8" rx="3" fill="#ffd47b"/><path d="M-10 60v22M0 60v30M10 60v22" stroke="#ffd47b" stroke-width="3"/></g>`;
+const RG=(x,y,s)=>{const c=['#ff5a7a','#ffd47b','#ff9e42','#7be0c3','#b57bff'];let o=`<g transform="translate(${x} ${y}) scale(${s})">`;for(let k=0;k<3;k++){const n=8+k*4,Ln=100-k*30;for(let i=0;i<n;i++)o+=`<ellipse cy="${-Ln/2}" rx="${15-k*3}" ry="${Ln/2}" fill="${c[(i+k)%5]}" opacity=".92" transform="rotate(${i*360/n+k*11})"/>`}for(let i=0;i<24;i++){const a=i*Math.PI/12;o+=`<circle cx="${Math.round(Math.cos(a)*118)}" cy="${Math.round(Math.sin(a)*118)}" r="4" fill="#ffe7a4"/>`}return o+`<circle r="14" fill="#fff3b0"/></g>`};
+const FW=(x,y,s,c)=>{let o=`<g transform="translate(${x} ${y}) scale(${s})" stroke="${c}" stroke-linecap="round" fill="${c}">`;for(let i=0;i<24;i++){const a=i*Math.PI/12,l2=60+(i%2)*25;o+=`<line x1="${Math.round(Math.cos(a)*30)}" y1="${Math.round(Math.sin(a)*30)}" x2="${Math.round(Math.cos(a)*l2)}" y2="${Math.round(Math.sin(a)*l2)}" stroke-width="3"/><circle cx="${Math.round(Math.cos(a)*(l2+10))}" cy="${Math.round(Math.sin(a)*(l2+10))}" r="3" stroke="none"/>`}return o+`</g>`};
+const LT=(x,y,s)=>{let o=`<g transform="translate(${x} ${y}) scale(${s})"><ellipse cy="48" rx="150" ry="22" fill="#1d6b78" opacity=".6"/>`;[-70,-45,-20,20,45,70].forEach(a=>o+=`<ellipse cy="-45" rx="22" ry="58" fill="#ff8fb8" opacity=".85" transform="rotate(${a} 0 30)"/>`);return o+`<ellipse cy="-48" rx="24" ry="60" fill="#ffb3d1"/><circle cy="-20" r="10" fill="#ffd47b"/></g>`};
+const fig=(x,y,h,c)=>`<g transform="translate(${x} ${y})"><circle cy="${-h}" r="${h*.18}" fill="#f1c29a"/><path d="M${-h*.25} ${-h*.75}Q0 ${-h*.85} ${h*.25} ${-h*.75}L${h*.32} 0H${-h*.32}Z" fill="${c}"/></g>`;
+const die=(x,y,rot,dots)=>`<g transform="translate(${x} ${y}) rotate(${rot})"><rect x="-45" y="-45" width="90" height="90" rx="14" fill="#fff3dc" stroke="#d79a3a" stroke-width="4"/>`+dots.map(a=>`<circle cx="${a[0]}" cy="${a[1]}" r="7" fill="#8a1c2b"/>`).join('')+`</g>`;
+const M={
+diya:()=>D(300,265,1.7)+D(130,330,.7)+D(470,330,.7),
+diyas:()=>[100,200,300,400,500].map((x,i)=>D(x,i==2?270:300,i==2?1.1:.75)).join(''),
+rangoli:()=>RG(300,215,1.35),
+lantern:()=>L(300,170,1.8,'#e8452c')+D(300,372,.5)+D(150,360,.45)+D(450,360,.45),
+lanterns:()=>L(130,170,1,'#e8452c')+L(300,200,1.25,'#ffb23f')+L(470,170,1,'#b57bff')+D(300,375,.45),
+firework:()=>FW(300,160,1.7,'#ffd47b')+FW(120,120,.8,'#ff7ab6')+FW(485,110,.9,'#7be0c3')+`<path d="M-100 400V335h90v-45h50v60h60v-85h50v95h70v-55h60v75h80v-70h60v85h100V400z" fill="#0b0715"/>`+[70,140,215,290,370,440,520].map((x,i)=>`<rect x="${x}" y="${350+(i%3)*12}" width="8" height="10" fill="#ffd47b"/>`).join(''),
+sweets:()=>`<g transform="translate(300 250) scale(1.5)"><ellipse cy="40" rx="130" ry="26" fill="#ffd47b"/><ellipse cy="34" rx="115" ry="20" fill="#9b5a2a"/>`+[[-60,18],[-20,18],[20,18],[60,18],[-40,-8],[0,-8],[40,-8],[-20,-34],[20,-34],[0,-58]].map(a=>`<circle cx="${a[0]}" cy="${a[1]}" r="21" fill="#ff9e42"/><circle cx="${a[0]-6}" cy="${a[1]-7}" r="7" fill="#ffd9a0" opacity=".7"/>`).join('')+`</g>`,
+kalash:()=>`<g transform="translate(300 250) scale(1.45)">`+[-62,-31,0,31,62].map(a=>`<ellipse cy="-82" rx="11" ry="34" fill="#2e9a57" transform="rotate(${a} 0 -30)"/>`).join('')+`<circle cy="-52" r="27" fill="#8a4b1f"/><circle cx="-8" cy="-60" r="4" fill="#c28a50"/><path d="M-52 -30Q-74 22 -48 66H48Q74 22 52 -30Z" fill="#d79a3a"/><ellipse cy="-30" rx="52" ry="9" fill="#f0c15a"/><path d="M-60 6Q0 24 60 6" stroke="#c2314b" stroke-width="12" fill="none"/><circle cy="30" r="14" fill="#ffe7a4" opacity=".8"/></g>`+D(160,350,.45)+D(440,350,.45),
+lotus:()=>LT(300,235,1.6)+D(300,372,.4),
+house:()=>{let o=`<rect x="-100" y="330" width="800" height="200" fill="#0b0715"/><rect x="180" y="220" width="240" height="120" fill="#3a1c44"/><path d="M160 224L300 140L440 224Z" fill="#7a2e55"/><rect x="278" y="268" width="44" height="72" rx="22" fill="#ffb23f"/><rect x="205" y="250" width="40" height="40" fill="#ffd47b"/><rect x="355" y="250" width="40" height="40" fill="#ffd47b"/>`;for(let i=0;i<=14;i++){const t=i/14;o+=`<circle cx="${160+280*t}" cy="${224-84*(1-Math.abs(2*t-1))}" r="5" fill="${['#ff5a7a','#ffd47b','#7be0c3'][i%3]}"/>`}for(let i=0;i<7;i++)o+=D(130+i*55,376,.18);return o},
+palace:()=>{let o=`<rect x="-100" y="320" width="800" height="200" fill="#0b0715"/><rect x="170" y="230" width="260" height="100" fill="#e8c27a"/><path d="M230 230A70 70 0 0 1 370 230Z" fill="#f4d894"/><line x1="300" y1="160" x2="300" y2="128" stroke="#ffd47b" stroke-width="4"/><path d="M300 128l38 11-38 11z" fill="#e8452c"/><rect x="120" y="205" width="50" height="125" fill="#d9ad62"/><rect x="430" y="205" width="50" height="125" fill="#d9ad62"/><path d="M118 205A27 27 0 0 1 172 205Z" fill="#f4d894"/><path d="M428 205A27 27 0 0 1 482 205Z" fill="#f4d894"/>`;[205,262,318,375].forEach(x=>o+=`<path d="M${x} 330V285A18 18 0 0 1 ${x+36} 285V330Z" fill="#4a1d3a"/><rect x="${x+12}" y="300" width="12" height="14" fill="#ffd47b"/>`);for(let i=0;i<8;i++)o+=D(110+i*54,372,.17);return o},
+bow:()=>`<g transform="translate(300 205)"><circle r="130" fill="#ffd47b" opacity=".1"/><path d="M-70 -150Q110 0 -70 150" stroke="#ffd47b" stroke-width="9" fill="none" stroke-linecap="round"/><line x1="-70" y1="-150" x2="-70" y2="150" stroke="#fff3d0" stroke-width="2"/><line x1="-150" y1="0" x2="190" y2="0" stroke="#e8c27a" stroke-width="6"/><path d="M200 0l-28 -15v30z" fill="#ffd47b"/><path d="M-150 0l-22 -13m22 13l-22 13M-130 0l-22 -13m22 13l-22 13" stroke="#ff7a59" stroke-width="4" fill="none"/></g>`+D(120,370,.35)+D(480,370,.35),
+forest:()=>{let o=`<circle cx="470" cy="85" r="36" fill="#fff3c8"/>`;[[60,1],[150,1.2],[250,.9],[360,1.15],[450,.95],[540,1.25]].forEach(a=>{o+=`<g transform="translate(${a[0]} 330) scale(${a[1]})" fill="#0f3a2a"><path d="M0 -190L-46 -90H46Z"/><path d="M0 -150L-56 -40H56Z"/><path d="M0 -100L-66 10H66Z"/><rect x="-8" y="10" width="16" height="30" fill="#4a2a1a"/></g>`});return o+`<rect x="-100" y="340" width="800" height="100" fill="#07150f"/><path d="M240 340V290L300 250L360 290V340Z" fill="#6a3a1f"/><path d="M225 292L300 238L375 292Z" fill="#c79a4a"/><rect x="287" y="300" width="26" height="40" fill="#ffb23f"/>`+D(420,378,.28)},
+deer:()=>`<g transform="translate(290 235)"><circle cy="-20" r="150" fill="#ffd47b" opacity=".12"/><g fill="#ffc14a"><ellipse rx="90" ry="42"/><path d="M55 -25L85 -100L112 -90L96 -15Z"/><ellipse cx="108" cy="-100" rx="27" ry="16" transform="rotate(-18 108 -100)"/><rect x="-72" y="30" width="12" height="75" rx="5"/><rect x="-42" y="34" width="12" height="71" rx="5"/><rect x="44" y="34" width="12" height="71" rx="5"/><rect x="70" y="30" width="12" height="75" rx="5"/><ellipse cx="-94" cy="-10" rx="10" ry="16" transform="rotate(30 -94 -10)"/></g><g stroke="#ffe7a4" stroke-width="5" stroke-linecap="round" fill="none"><path d="M100 -112L96 -150M96 -150L80 -166M96 -150L114 -170M114 -170L128 -160"/></g><g fill="#fff3d0" opacity=".7"><circle cx="-30" cy="-15" r="6"/><circle cx="10" cy="-22" r="5"/><circle cx="35" cy="-8" r="6"/><circle cx="-5" cy="8" r="5"/></g></g><path d="M-50 395Q300 340 650 395V420H-50Z" fill="#2b5a2a"/>`,
+mountain:()=>`<circle cx="470" cy="90" r="34" fill="#fff3c8"/><path d="M-50 400L150 170L250 260L360 120L520 300L650 400Z" fill="#2b1a48"/><path d="M360 120l-36 54 22-10 14 20 14-20 22 10z" fill="#e8e0ff"/><circle cx="360" cy="96" r="28" fill="#7affb0" opacity=".35"/><circle cx="360" cy="96" r="10" fill="#b8ffd8"/><g transform="translate(180 300) rotate(-25)"><rect x="-6" y="-10" width="12" height="130" rx="5" fill="#a86a2a"/><circle cy="-38" r="36" fill="#ffc14a"/><circle cy="-38" r="14" fill="#c4622d"/></g>`,
+dice:()=>`<rect x="100" y="288" width="400" height="26" rx="8" fill="#5b2a1a"/>`+die(240,225,-14,[[-22,-22],[22,-22],[0,0],[-22,22],[22,22]])+die(370,245,18,[[-20,-20],[0,0],[20,20]])+D(110,360,.3)+D(490,360,.3),
+target:()=>`<g transform="translate(300 200)">`+[115,85,55,25].map((q,i)=>`<circle r="${q}" fill="${i%2?'#fff3dc':'#c2314b'}"/>`).join('')+`<line x1="-210" y1="110" x2="0" y2="0" stroke="#e8c27a" stroke-width="7" stroke-linecap="round"/><path d="M0 0l-26 6 6-22z" fill="#ffd47b"/></g>`,
+chariot:()=>RY(300,250,36,110,260)+`<path d="M170 255H430L410 160H190Z" fill="#c2314b" stroke="#ffd47b" stroke-width="4"/><line x1="300" y1="160" x2="300" y2="92" stroke="#ffd47b" stroke-width="4"/><path d="M300 92l52 15-52 15z" fill="#ffb23f"/><g transform="translate(300 275)"><circle r="66" fill="#150a22" stroke="#ffd47b" stroke-width="9"/>`+[0,1,2,3,4,5,6,7].map(i=>`<line y2="-62" stroke="#ffd47b" stroke-width="4" transform="rotate(${i*45})"/>`).join('')+`<circle r="12" fill="#ffd47b"/></g>`,
+book:()=>RY(300,220,36,120,230)+`<path d="M300 300Q220 270 130 292V160Q220 140 300 175Z" fill="#fff3dc"/><path d="M300 300Q380 270 470 292V160Q380 140 300 175Z" fill="#ffe7b0"/><path d="M300 175V300" stroke="#c4822d" stroke-width="3"/><g stroke="#c9a66a" stroke-width="3">`+[0,1,2,3].map(i=>`<line x1="160" y1="${195+i*24}" x2="275" y2="${200+i*24}"/><line x1="325" y1="${200+i*24}" x2="440" y2="${195+i*24}"/>`).join('')+`</g>`+D(300,140,.55),
+coins:()=>`<g transform="translate(300 255)"><circle cy="-30" r="150" fill="#ffd47b" opacity=".12"/><path d="M-80 -20Q-100 60 -50 92H50Q100 60 80 -20Z" fill="#b8541f"/><ellipse cy="-20" rx="82" ry="16" fill="#e0893a"/>`+[[-50,-40],[-10,-54],[36,-42],[-24,-76],[16,-84]].map(a=>`<circle cx="${a[0]}" cy="${a[1]}" r="27" fill="#ffd04a" stroke="#d79a3a" stroke-width="4"/><circle cx="${a[0]}" cy="${a[1]}" r="15" fill="none" stroke="#d79a3a" stroke-width="2"/>`).join('')+`</g>`+D(140,350,.4)+D(460,350,.4),
+sparkler:(p,r)=>[[190,250,-18],[300,225,0],[410,250,18]].map(a=>{let o=`<g transform="translate(${a[0]} ${a[1]}) rotate(${a[2]})"><rect x="-3" width="6" height="150" fill="#c9a66a"/><g stroke="#ffe7a4" stroke-linecap="round">`;for(let i=0;i<22;i++){const t=i*2*Math.PI/22,l=18+r()*38;o+=`<line x2="${Math.round(Math.cos(t)*l)}" y2="${Math.round(Math.sin(t)*l)}" stroke-width="2.5"/>`}return o+`</g><circle r="9" fill="#fff"/></g>`}).join(''),
+gift:()=>`<g transform="translate(300 235)"><rect x="-90" y="-20" width="180" height="120" rx="8" fill="#c2314b"/><rect x="-90" y="-20" width="180" height="28" rx="8" fill="#a3253d"/><rect x="-14" y="-20" width="28" height="120" fill="#ffd47b"/><path d="M0 -20Q-64 -86 -44 -20ZM0 -20Q64 -86 44 -20Z" fill="#ffd47b"/></g><g transform="translate(150 335)"><rect x="-40" y="-30" width="80" height="60" rx="6" fill="#2a8fd0"/><rect x="-6" y="-30" width="12" height="60" fill="#ffe7a4"/></g><g transform="translate(460 340)"><rect x="-36" y="-26" width="72" height="52" rx="6" fill="#7a3fb0"/><rect x="-6" y="-26" width="12" height="52" fill="#ffe7a4"/></g>`,
+family:()=>`<rect x="-100" y="332" width="800" height="200" fill="#0b0715" opacity=".7"/>`+fig(195,335,150,'#e8452c')+fig(290,335,162,'#2a8fd0')+fig(380,335,96,'#ffb23f')+fig(440,335,112,'#b57bff')+D(300,380,.3),
+river:()=>`<rect x="-100" y="230" width="800" height="200" fill="#0b1c3a" opacity=".85"/><circle cx="470" cy="80" r="36" fill="#fff3c8"/>`+[250,280,315,350].map(y=>`<path d="M-20 ${y}Q80 ${y-12} 180 ${y}T380 ${y}T580 ${y}T780 ${y}" stroke="#ffd47b" stroke-opacity=".25" stroke-width="2" fill="none"/>`).join('')+[[140,285,.45],[270,325,.55],[390,290,.5],[480,340,.4]].map(a=>D(a[0],a[1],a[2])).join('')
+};
+let _id=0;
+function art(motif,pi,off){
+ const id='a'+(++_id),p=PAL[pi%PAL.length],r=rng(pi*97+motif.length*13+(off||0)+_id);
+ let s=`<svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img"><defs><radialGradient id="${id}g" cx=".5" cy=".62" r=".55"><stop offset="0" stop-color="${p[1]}"/><stop offset="1" stop-color="${p[0]}"/></radialGradient><filter id="${id}b"><feGaussianBlur stdDeviation="14"/></filter></defs><rect x="-600" y="-400" width="1800" height="1200" fill="url(#${id}g)"/>`;
+ for(let i=0;i<46;i++)s+=`<circle cx="${Math.round(r()*600)}" cy="${Math.round(r()*300)}" r="${(r()*1.8+.4).toFixed(1)}" fill="#ffe9b0" opacity="${(r()*.7+.2).toFixed(2)}"/>`;
+ s+=`<circle cx="300" cy="230" r="150" fill="${p[2]}" opacity=".2" filter="url(#${id}b)"/>`;
+ return s+(M[motif]||M.diya)(p,r)+'</svg>'}
+
+/* ---- content: [english, tamil] ---- */
+const MOMENTS=[
+{m:'diyas',p:0,t:["Lamps at Dusk","அந்தி நேர விளக்குகள்"],d:["As evening falls, rows of clay lamps flicker to life on windowsills, doorsteps and terraces. Each tiny flame pushes back the dark, filling homes with warmth, hope and a calm golden glow that feels like blessing.","மாலை இருள் சூழும்போது ஜன்னல்கள், வாசல்கள், மொட்டை மாடிகளில் வரிசையாக மண் விளக்குகள் ஒளிர்கின்றன. ஒவ்வொரு சிறு சுடரும் இருளை விரட்டி, வீடு முழுவதும் அரவணைப்பையும் நம்பிக்கையையும் பொன்னிற அமைதியையும் நிரப்புகிறது."]},
+{m:'rangoli',p:2,t:["Rangoli Welcome","கோல வரவேற்பு"],d:["At dawn, families draw colourful rangoli and kolam patterns at the entrance using rice flour and flower petals. These intricate designs welcome guests and invite prosperity, creativity and good fortune into the home.","விடியற்காலையில் வீட்டு வாசலில் அரிசி மாவு, பூ இதழ்களால் வண்ணக் கோலங்களும் ரங்கோலிகளும் போடப்படுகின்றன. இந்த அழகிய வடிவங்கள் விருந்தினரை வரவேற்று, செழிப்பையும் படைப்பாற்றலையும் நல்ல அதிர்ஷ்டத்தையும் வீட்டிற்கு அழைக்கின்றன."]},
+{m:'lanterns',p:4,t:["Glowing Lanterns","ஒளிரும் வண்ண விளக்குகள்"],d:["Paper and glass lanterns sway from balconies and gateways, casting soft colourful light across the streets. Their gentle glow turns ordinary neighbourhoods into magical festive lanes full of wonder and cheerful evening walks.","காகித மற்றும் கண்ணாடி விளக்குகள் பால்கனிகளிலும் நுழைவாயில்களிலும் அசைந்தாடி, தெருக்களில் மென்மையான வண்ண ஒளியைப் பரப்புகின்றன. அவற்றின் இதமான ஒளி சாதாரண தெருக்களை அதிசயம் நிறைந்த பண்டிகை வீதிகளாக மாற்றுகிறது."]},
+{m:'firework',p:1,t:["Sky of Fireworks","வாணவேடிக்கை வானம்"],d:["Night skies burst into bright flowers of gold, red and green as fireworks rise and sparkle. Celebrate with care and keep a safe distance, so children, pets and neighbours can enjoy the dazzling show peacefully.","வாணவேடிக்கைகள் எழுந்து வெடிக்கும்போது இரவு வானம் தங்கம், சிவப்பு, பச்சை நிற மலர்களாகப் பூக்கிறது. குழந்தைகள், செல்லப்பிராணிகள், அண்டை வீட்டாரும் நிம்மதியாக ரசிக்க, கவனத்துடனும் பாதுகாப்பான தூரத்திலும் கொண்டாடுவோம்."]},
+{m:'sweets',p:5,t:["Sweets to Share","பகிரும் இனிப்புகள்"],d:["Kitchens fill with the aroma of ghee, cardamom and roasted nuts. Laddus, adhirasam, jalebi and barfi are shared with relatives and neighbours, turning every visit into a sweet moment of affection and togetherness.","நெய், ஏலக்காய், வறுத்த பருப்புகளின் மணம் சமையலறையை நிறைக்கிறது. லட்டு, அதிரசம், ஜிலேபி, பர்ஃபி போன்ற இனிப்புகள் உறவினர்களுடனும் அண்டை வீட்டாருடனும் பகிரப்பட்டு, ஒவ்வொரு சந்திப்பையும் அன்பான இனிய தருணமாக்குகின்றன."]},
+{m:'kalash',p:2,t:["Lakshmi Puja","லட்சுமி பூஜை"],d:["On Diwali evening, families gather for Lakshmi Puja, offering flowers, sweets and lamps before a decorated kalash. They pray for health, wisdom and prosperity, welcoming the goddess into homes filled with light.","தீபாவளி மாலையில் குடும்பத்தினர் ஒன்றுகூடி, அலங்கரிக்கப்பட்ட கலசத்தின் முன் பூக்கள், இனிப்புகள், விளக்குகளுடன் லட்சுமி பூஜை செய்கிறார்கள். ஆரோக்கியம், ஞானம், செழிப்புக்காக வேண்டி, ஒளிமயமான வீட்டிற்குள் தேவியை வரவேற்கிறார்கள்."]},
+{m:'house',p:1,t:["Home in Lights","ஒளிமயமான இல்லம்"],d:["Houses wear strings of twinkling lights and rows of diyas along walls and rooftops. The entire street shines together, reminding everyone that a community glows brightest when neighbours celebrate side by side.","வீடுகள் மின்னும் விளக்குச் சரங்களையும் சுவர்கள், மொட்டை மாடிகளில் வரிசையான அகல் விளக்குகளையும் அணிந்து ஜொலிக்கின்றன. அண்டை வீட்டாரோடு இணைந்து கொண்டாடும்போதே ஒரு சமூகம் மிக அழகாக ஒளிரும் என்பதை முழு தெருவும் நினைவூட்டுகிறது."]},
+{m:'sparkler',p:0,t:["Sparkler Joy","மத்தாப்பு மகிழ்ச்சி"],d:["Children wave glittering sparklers in the cool night air, drawing golden circles of light and laughing with delight. These little sparkles become treasured memories that families remember long after the festival ends.","குளிர்ந்த இரவுக் காற்றில் குழந்தைகள் மத்தாப்புகளை சுழற்றி, பொன்னிற ஒளி வட்டங்களை வரைந்து மகிழ்ச்சியில் சிரிக்கிறார்கள். இந்த சிறு பொறிகள், பண்டிகை முடிந்த பின்பும் குடும்பங்கள் நினைவில் வைத்திருக்கும் அரிய நினைவுகளாகின்றன."]},
+{m:'gift',p:4,t:["Gifts of Love","அன்புப் பரிசுகள்"],d:["Beautifully wrapped gifts, dry fruits and sweet boxes travel between homes during the festival. Giving something thoughtful, however small, shows love and gratitude and strengthens the bonds between friends and family.","அழகாகச் சுற்றப்பட்ட பரிசுகள், உலர் பழங்கள், இனிப்புப் பெட்டிகள் பண்டிகை நாட்களில் வீடுகளுக்கிடையே பயணிக்கின்றன. சிறியதாக இருந்தாலும் மனமார்ந்த பரிசு அன்பையும் நன்றியையும் காட்டி நண்பர்கள், குடும்பத்தினரிடையே உறவை வலுப்படுத்துகிறது."]},
+{m:'lotus',p:3,t:["Sacred Lotus","புனிதத் தாமரை"],d:["The lotus, rising spotless from muddy water, is a symbol of purity and grace. During Diwali, lotus motifs adorn altars, rangoli and decorations, inspiring us to stay calm and bright in every situation.","சேற்றிலிருந்து தூய்மையாக எழும் தாமரை தூய்மை மற்றும் அருளின் சின்னம். தீபாவளியில் பூஜை மேடைகள், கோலங்கள், அலங்காரங்களில் தாமரை வடிவங்கள் இடம்பெற்று, எந்தச் சூழலிலும் அமைதியுடனும் பிரகாசத்துடனும் இருக்க நமக்கு ஊக்கமளிக்கின்றன."]},
+{m:'family',p:5,t:["Family Together","குடும்பம் ஒன்றாக"],d:["Grandparents, parents and children dress in festive clothes and gather around the lamps. Stories, laughter and shared meals fill the evening, proving that the happiest light of Diwali is the warmth of family.","தாத்தா பாட்டி, பெற்றோர், குழந்தைகள் பண்டிகை ஆடைகளை அணிந்து விளக்குகளைச் சுற்றி ஒன்றுகூடுகிறார்கள். கதைகள், சிரிப்பு, பகிர்ந்துண்ணும் உணவு மாலையை நிரப்புகின்றன; தீபாவளியின் மிக இனிய ஒளி குடும்பத்தின் அரவணைப்பே என்பதை இது உணர்த்துகிறது."]},
+{m:'river',p:1,t:["Lights on Water","நீரில் விளக்குகள்"],d:["In many places, small lamps are set afloat on rivers and ponds at night. Drifting gently with the water, their reflections shimmer like a second sky, carrying quiet wishes and prayers into the darkness.","பல இடங்களில் இரவில் சிறு விளக்குகள் ஆறுகளிலும் குளங்களிலும் மிதக்க விடப்படுகின்றன. நீரோடு மெதுவாக நகரும் அவற்றின் பிரதிபலிப்புகள் இரண்டாம் வானம்போல மின்னி, அமைதியான வேண்டுதல்களை இருளில் சுமந்து செல்கின்றன."]}
+];
+const MEANINGS=[
+{m:'diya',p:0,t:["Light Over Darkness","இருளை வெல்லும் ஒளி"],d:["Every lamp reminds us that knowledge, kindness and hope can always overcome ignorance, fear and sorrow.","ஒவ்வொரு விளக்கும், அறிவு, கருணை, நம்பிக்கை ஆகியவை அறியாமை, பயம், துயரத்தை எப்போதும் வெல்லும் என்பதை நினைவூட்டுகிறது."]},
+{m:'bow',p:2,t:["Good Over Evil","தீமையை வெல்லும் நன்மை"],d:["Diwali celebrates the victory of truth and goodness over injustice, reminding us to stand for what is right.","உண்மையும் நன்மையும் அநீதியை வென்றதைத் தீபாவளி கொண்டாடுகிறது; நேர்மைக்காக உறுதியாக நிற்க நம்மை நினைவூட்டுகிறது."]},
+{m:'palace',p:5,t:["Rama Returns Home","ராமர் இல்லம் திரும்புதல்"],d:["Many remember Lord Rama's return to Ayodhya after exile, when joyful people lit lamps to welcome him home.","வனவாசம் முடிந்து ராமர் அயோத்தி திரும்பியபோது மக்கள் மகிழ்ச்சியுடன் விளக்கேற்றி வரவேற்றதை பலர் நினைவுகூர்கிறார்கள்."]},
+{m:'coins',p:2,t:["Lakshmi's Blessings","லட்சுமியின் அருள்"],d:["Families welcome Goddess Lakshmi, praying for health, wisdom and prosperity shared generously with everyone around them.","குடும்பங்கள் லட்சுமி தேவியை வரவேற்று, ஆரோக்கியம், ஞானம், செழிப்பு அனைவருடனும் பகிரப்பட வேண்டுமெனப் பிரார்த்திக்கின்றன."]},
+{m:'lotus',p:4,t:["New Beginnings","புதிய தொடக்கம்"],d:["Clean homes, new clothes and fresh resolutions make Diwali a perfect time to begin again with gratitude.","சுத்தமான வீடு, புத்தாடை, புதிய உறுதிமொழிகள் தீபாவளியை நன்றியுடன் புதிதாகத் தொடங்கும் அருமையான நேரமாக்குகின்றன."]},
+{m:'chariot',p:1,t:["Krishna's Victory","கிருஷ்ணரின் வெற்றி"],d:["In South India, Naraka Chaturdashi marks Krishna's victory over the demon Narakasura, bringing freedom and joy at dawn.","தென்னிந்தியாவில் நரக சதுர்த்தசி, கிருஷ்ணர் நரகாசுரனை வென்ற நாளாக, விடியலில் விடுதலையையும் மகிழ்ச்சியையும் தருகிறது."]},
+{m:'book',p:3,t:["The Lamp of Wisdom","ஞான தீபம்"],d:["A lit lamp symbolises wisdom; Diwali encourages learning, curiosity and the courage to question darkness within us.","ஏற்றிய விளக்கு ஞானத்தின் சின்னம்; தீபாவளி கற்றல், ஆர்வம், நமக்குள் இருக்கும் இருளை எதிர்கொள்ளும் துணிவை ஊக்குவிக்கிறது."]},
+{m:'family',p:0,t:["Unity","ஒற்றுமை"],d:["People of every age and background share sweets, visits and blessings, making togetherness the festival's strongest light.","எல்லா வயது, பின்னணியினரும் இனிப்புகள், சந்திப்புகள், ஆசிகளைப் பகிர்ந்து, ஒற்றுமையை பண்டிகையின் வலிமையான ஒளியாக்குகிறார்கள்."]},
+{m:'sweets',p:5,t:["Gratitude and Sharing","நன்றியும் பகிர்வும்"],d:["Diwali invites us to thank those who support us and to share our joy with people in need.","நமக்கு ஆதரவாக இருப்போருக்கு நன்றி கூறவும், தேவையிலிருப்போருடன் நம் மகிழ்ச்சியைப் பகிரவும் தீபாவளி அழைக்கிறது."]},
+{m:'firework',p:4,t:["Hope and Joy","நம்பிக்கையும் மகிழ்ச்சியும்"],d:["Bright skies and smiling faces remind us that hope, once lit, can spread from one heart to many.","ஒளிரும் வானமும் புன்னகை முகங்களும், ஒருமுறை ஏற்றப்பட்ட நம்பிக்கை ஒரு மனதிலிருந்து பல மனங்களுக்கு பரவும் என்பதை நினைவூட்டுகின்றன."]}
+];
+const TRADITIONS=[
+{m:'kalash',p:3,t:["Oil Bath at Dawn","விடியலில் எண்ணெய்க் குளியல்"],d:["Before sunrise, families take a ritual oil bath, symbolising purification and a fresh, energetic start to the festival day.","சூரிய உதயத்திற்கு முன் குடும்பத்தினர் எண்ணெய்க் குளியல் செய்கிறார்கள்; இது தூய்மையையும் புத்துணர்ச்சியுடன் பண்டிகை நாளின் தொடக்கத்தையும் குறிக்கிறது."]},
+{m:'house',p:1,t:["Cleaning the Home","இல்லம் சுத்தம் செய்தல்"],d:["Homes are cleaned, painted and decorated beforehand, inviting positivity and prosperity to enter a fresh, welcoming space.","வீடுகள் முன்கூட்டியே சுத்தம் செய்யப்பட்டு, வண்ணம் தீட்டி அலங்கரிக்கப்படுகின்றன; நல்ல சக்தியையும் செழிப்பையும் புதிய இடத்திற்கு வரவேற்கின்றன."]},
+{m:'diyas',p:0,t:["Lighting the Diyas","விளக்கேற்றுதல்"],d:["Clay lamps filled with oil or ghee are lit at dusk and placed at doors, windows and altars.","எண்ணெய் அல்லது நெய் நிரப்பிய மண் விளக்குகள் மாலையில் ஏற்றப்பட்டு வாசல், ஜன்னல், பூஜை மேடையில் வைக்கப்படுகின்றன."]},
+{m:'rangoli',p:2,t:["Rangoli and Kolam","ரங்கோலியும் கோலமும்"],d:["Intricate rangoli and kolam patterns, drawn with powders and flowers, greet guests and invite divine blessings.","பொடிகளும் பூக்களும் கொண்டு வரையப்படும் நுணுக்கமான கோலங்கள், விருந்தினரை வரவேற்று தெய்வ அருளை அழைக்கின்றன."]},
+{m:'coins',p:5,t:["Lakshmi Puja","லட்சுமி பூஜை"],d:["Evening prayers to Lakshmi and Ganesha, with flowers, sweets and lamps, seek wisdom, success and harmony at home.","மலர்கள், இனிப்புகள், விளக்குகளுடன் லட்சுமி மற்றும் விநாயகருக்கு செய்யும் மாலை பூஜை, ஞானம், வெற்றி, இல்ல நல்லிணக்கத்தை வேண்டுகிறது."]},
+{m:'family',p:4,t:["New Clothes","புத்தாடை"],d:["Wearing new clothes on Diwali morning symbolises fresh beginnings, and families often gift outfits to loved ones.","தீபாவளி காலையில் புத்தாடை அணிவது புதிய தொடக்கத்தின் அடையாளம்; குடும்பங்கள் அன்பானவர்களுக்கு ஆடைகளையும் பரிசளிக்கின்றன."]},
+{m:'sweets',p:0,t:["Sweets and Snacks","இனிப்பும் பலகாரமும்"],d:["Laddus, adhirasam, murukku and other sweets and snacks are prepared at home and shared warmly with neighbours.","லட்டு, அதிரசம், முறுக்கு போன்ற இனிப்புகளும் பலகாரங்களும் வீட்டில் தயாரிக்கப்பட்டு அண்டை வீட்டாருடன் அன்புடன் பகிரப்படுகின்றன."]},
+{m:'sparkler',p:1,t:["Careful Crackers","கவனமான பட்டாசு"],d:["Fireworks and sparklers add festive sparkle; celebrate responsibly, keep distance, and consider children, elders, pets and the environment.","பட்டாசுகளும் மத்தாப்புகளும் பண்டிகைக்கு ஒளி சேர்க்கின்றன; பொறுப்புடன், தூரம் காத்து, குழந்தைகள், முதியோர், செல்லப்பிராணிகள், சுற்றுச்சூழலை எண்ணிக் கொண்டாடுங்கள்."]},
+{m:'gift',p:2,t:["Visits and Gifts","சந்திப்பும் பரிசும்"],d:["Relatives and friends visit each other, exchange gifts and sweets, and renew bonds with hugs and good wishes.","உறவினர்களும் நண்பர்களும் ஒருவரை ஒருவர் சந்தித்து, பரிசுகளும் இனிப்புகளும் பரிமாறி, அரவணைப்பாலும் வாழ்த்துகளாலும் உறவைப் புதுப்பிக்கிறார்கள்."]},
+{m:'lantern',p:3,t:["Torans and Lanterns","தோரணமும் விளக்குகளும்"],d:["Mango-leaf and flower torans, along with colourful lanterns, decorate doorways and bring festive cheer to every entrance.","மாவிலைத் தோரணங்களும் பூமாலைகளும் வண்ண விளக்குகளும் வாசல்களை அலங்கரித்து ஒவ்வொரு நுழைவாயிலுக்கும் பண்டிகை மகிழ்ச்சியைச் சேர்க்கின்றன."]}
+];
+</script>
+
+<!-- ============ SCRIPT 2: behaviour ============ -->
+<script id="s2">
+const $=id=>document.getElementById(id);
+let lang='en',stage='intro';
+const T={
+en:{nav_moments:'Moments',nav_meaning:'Meaning',nav_traditions:'Traditions',nav_wish:'Wish',
+h_moments:'Moments that glow',s_moments:'Beautiful moments and celebrations of Diwali.',h_meaning:'The meaning of Diwali',s_meaning:'The thoughts behind the lights.',h_traditions:'Traditions we love',s_traditions:'Beautiful customs celebrated in homes everywhere.',h_wish:'Send a wish',s_wish:'Create a personalised Diwali poster and share it with someone special.',
+tab_email:'✉ Gmail',tab_wa:'💬 WhatsApp',l_sender:'Your name',l_to:'Recipient name (optional)',l_email:'Recipient Gmail address',l_cc:'CC (optional, separate with commas)',l_phone:'WhatsApp number (with country code)',l_msg:'Your greeting message',
+p_sender:'Your name',p_to:'Friend or family',p_msg:'Wishing you and your family a bright, joyful and beautiful Diwali!',
+preview:'Preview poster',another:'Another design',download:'Download',send:'Send my Diwali wish ↗',
+hintEmail:'Enter your name, a valid Gmail address and a greeting. Your poster is made in this browser and your email app opens with the message. Attach the downloaded poster before sending.',
+hintWa:'Enter your name, the WhatsApp number with country code and a greeting. We create the poster and open WhatsApp sharing. Confirm the recipient and tap Send.',
+st_prev:'A new poster design is ready. Press again for a different look.',st_mail:'Poster downloaded and your email draft opened. Attach Diwali-Greeting.png, then send.',st_wa1:'Choose WhatsApp in the share sheet, select the recipient and send.',st_wa2:'Poster downloaded and WhatsApp opened. Attach the poster in the chat, then tap Send.',st_dl:'Poster downloaded.',
+listen:'Listen',stop:'Stop',noTa:'No Tamil voice found on this device. Install one in your device settings to hear Tamil.',noSpeech:'Speech is not supported in this browser.',part:'Part'},
+ta:{nav_moments:'தருணங்கள்',nav_meaning:'பொருள்',nav_traditions:'மரபுகள்',nav_wish:'வாழ்த்து',
+h_moments:'ஒளிரும் தருணங்கள்',s_moments:'தீபாவளியின் அழகான தருணங்களையும் கொண்டாட்டங்களையும் காணுங்கள்.',h_meaning:'தீபாவளியின் பொருள்',s_meaning:'ஒளியின் பின்னுள்ள எண்ணங்கள்.',h_traditions:'நாம் நேசிக்கும் மரபுகள்',s_traditions:'எல்லா இல்லங்களிலும் கொண்டாடப்படும் அழகிய வழக்கங்கள்.',h_wish:'வாழ்த்து அனுப்புங்கள்',s_wish:'தனிப்பட்ட தீபாவளி சுவரொட்டியை உருவாக்கி அன்பானவருடன் பகிருங்கள்.',
+tab_email:'✉ ஜிமெயில்',tab_wa:'💬 வாட்ஸ்அப்',l_sender:'உங்கள் பெயர்',l_to:'பெறுபவர் பெயர் (விருப்பம்)',l_email:'பெறுபவரின் ஜிமெயில் முகவரி',l_cc:'CC (விருப்பம், காற்புள்ளியால் பிரிக்கவும்)',l_phone:'வாட்ஸ்அப் எண் (நாட்டுக் குறியீட்டுடன்)',l_msg:'உங்கள் வாழ்த்துச் செய்தி',
+p_sender:'உங்கள் பெயர்',p_to:'நண்பர் அல்லது குடும்பத்தினர்',p_msg:'உங்களுக்கும் உங்கள் குடும்பத்திற்கும் ஒளிமயமான, மகிழ்ச்சியான இனிய தீபாவளி நல்வாழ்த்துகள்!',
+preview:'சுவரொட்டி முன்னோட்டம்',another:'வேறு வடிவமைப்பு',download:'பதிவிறக்கு',send:'என் தீபாவளி வாழ்த்தை அனுப்பு ↗',
+hintEmail:'உங்கள் பெயர், செல்லுபடியாகும் ஜிமெயில் முகவரி, வாழ்த்தை உள்ளிடுங்கள். சுவரொட்டி இந்த உலாவியிலேயே உருவாகும்; உங்கள் மின்னஞ்சல் செயலி செய்தியுடன் திறக்கும். அனுப்புவதற்கு முன் பதிவிறக்கிய சுவரொட்டியை இணைக்கவும்.',
+hintWa:'உங்கள் பெயர், நாட்டுக் குறியீட்டுடன் வாட்ஸ்அப் எண், வாழ்த்தை உள்ளிடுங்கள். சுவரொட்டியை உருவாக்கி வாட்ஸ்அப் பகிர்வைத் திறப்போம். பெறுபவரை உறுதி செய்து Send அழுத்தவும்.',
+st_prev:'புதிய சுவரொட்டி வடிவமைப்பு தயார். வேறு தோற்றத்திற்கு மீண்டும் அழுத்தவும்.',st_mail:'சுவரொட்டி பதிவிறக்கப்பட்டு மின்னஞ்சல் வரைவு திறக்கப்பட்டது. Diwali-Greeting.png-ஐ இணைத்து அனுப்பவும்.',st_wa1:'பகிர்வுப் பட்டியலில் வாட்ஸ்அப்பைத் தேர்ந்து, பெறுபவரைத் தேர்ந்து அனுப்பவும்.',st_wa2:'சுவரொட்டி பதிவிறக்கப்பட்டு வாட்ஸ்அப் திறக்கப்பட்டது. அரட்டையில் சுவரொட்டியை இணைத்து Send அழுத்தவும்.',st_dl:'சுவரொட்டி பதிவிறக்கப்பட்டது.',
+listen:'கேளுங்கள்',stop:'நிறுத்து',noTa:'இந்த சாதனத்தில் தமிழ் குரல் இல்லை. தமிழைக் கேட்க சாதன அமைப்புகளில் ஒன்றை நிறுவவும்.',noSpeech:'இந்த உலாவியில் பேச்சு வசதி இல்லை.',part:'பகுதி'}};
+const t=k=>T[lang][k],tt=a=>a[lang==='ta'?1:0];
+function toast(m){const e=$('toast');e.textContent=m;e.hidden=false;clearTimeout(toast.h);toast.h=setTimeout(()=>e.hidden=true,4200)}
+
+/* ---- opening + greeting ---- */
+$('spin1').innerHTML=`<svg viewBox="-130 -130 260 260">${RG(0,0,1)}</svg>`;
+$('spin2').innerHTML=`<svg viewBox="-130 -130 260 260">${RG(0,0,1)}</svg>`;
+$('lanL').innerHTML=`<svg viewBox="-60 -150 120 250">${L(0,0,1,'#e8452c')}</svg>`;
+$('lanR').innerHTML=`<svg viewBox="-60 -150 120 250">${L(0,0,1,'#b57bff')}</svg>`;
+[ 'intro','greet'].forEach(id=>{const el=$(id);for(let i=0;i<26;i++){const s=document.createElement('span');s.className='pt';const z=Math.random()*5+2;s.style.cssText=`left:${Math.random()*100}%;width:${z}px;height:${z}px;animation-duration:${6+Math.random()*9}s;animation-delay:${-Math.random()*10}s`;el.appendChild(s)}});
+function playCrackers(){try{const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;const ac=new AC();[0,180,360,650,900].forEach((d,i)=>setTimeout(()=>{const len=ac.sampleRate*(i===0?.22:.32),buf=ac.createBuffer(1,len,ac.sampleRate),dt=buf.getChannelData(0);for(let j=0;j<len;j++)dt[j]=(Math.random()*2-1)*Math.pow(1-j/len,2.4);const src=ac.createBufferSource(),f=ac.createBiquadFilter(),g=ac.createGain();src.buffer=buf;f.type='highpass';f.frequency.value=i===0?700:1100;g.gain.value=i===0?.3:.18;src.connect(f);f.connect(g);g.connect(ac.destination);src.start()},d))}catch(e){}}
+function toGreet(){if(stage!=='intro')return;stage='greet';$('intro').classList.add('gone');$('greet').classList.remove('gone');playCrackers();for(let i=0;i<6;i++)setTimeout(()=>burst(),i*320)}
+function toApp(){if(stage!=='greet')return;stage='app';$('greet').classList.add('gone');$('app').hidden=false;$('fx').classList.add('ambient');scrollTo(0,0)}
+$('skipBtn').onclick=toGreet;setTimeout(toGreet,5600);$('enterBtn').onclick=toApp;
+
+/* ---- fireworks canvas ---- */
+const fxc=$('fx'),c=fxc.getContext('2d');let W,H,fw=[];const dpr=Math.min(devicePixelRatio||1,2);
+function size(){W=fxc.width=innerWidth*dpr;H=fxc.height=innerHeight*dpr;fxc.style.width=innerWidth+'px';fxc.style.height=innerHeight+'px'}
+let raf=0;
+function burst(x=Math.random()*W,y=Math.random()*H*.55){const hue=[38,48,22,285,15,330,170][Math.floor(Math.random()*7)];for(let i=0;i<44;i++){const a=Math.PI*2*i/44,v=(Math.random()*2.1+1)*dpr;fw.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,life:1,h:hue+Math.random()*20})}if(!raf)raf=requestAnimationFrame(anim)}
+function anim(){raf=0;c.clearRect(0,0,W,H);fw=fw.filter(p=>p.life>0);for(const p of fw){p.x+=p.vx;p.y+=p.vy;p.vy+=.025*dpr;p.vx*=.992;p.life-=.02;c.globalAlpha=Math.max(p.life,0);c.fillStyle=`hsl(${p.h} 100% 68%)`;c.shadowBlur=10*dpr;c.shadowColor=c.fillStyle;c.beginPath();c.arc(p.x,p.y,1.6*dpr,0,7);c.fill()}c.globalAlpha=1;c.shadowBlur=0;if(fw.length)raf=requestAnimationFrame(anim)}
+size();addEventListener('resize',size);
+setInterval(()=>{if(stage==='greet')burst()},1100);
+addEventListener('pointerdown',e=>{if(stage!=='intro'&&e.target.closest('#greet'))burst(e.clientX*dpr,e.clientY*dpr)});
+
+/* ---- rendering ---- */
+const pic=it=>it.img?`<img src="${it.img}" alt="">`:art(it.m,it.p);
+function renderMoments(){$('gMoments').innerHTML=feed(MOMENTS)}
+const feed=list=>list.map(it=>`<article class="card"><div class="pic">${pic(it)}</div><div class="body"><h3>${tt(it.t)}</h3><p>${tt(it.d)}</p></div></article>`).join('');
+function applyI18n(){document.querySelectorAll('[data-i]').forEach(e=>e.textContent=t(e.dataset.i));document.querySelectorAll('[data-ph]').forEach(e=>e.placeholder=t(e.dataset.ph));setHint()}
+function setLang(l){lang=l;document.documentElement.lang=l==='ta'?'ta':'en';document.querySelectorAll('.langseg button').forEach(b=>{const active=b.dataset.l===l;b.classList.toggle('on',active);b.setAttribute('aria-pressed',String(active))});renderMoments();$('gMeaning').innerHTML=feed(MEANINGS);$('gTrad').innerHTML=feed(TRADITIONS);applyI18n()}
+document.querySelectorAll('.langseg').forEach(s=>s.addEventListener('click',e=>{const b=e.target.closest('button');if(b)setLang(b.dataset.l)}));
+
+/* ---- nav ---- */
+function go(tab){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='v-'+tab));document.querySelectorAll('#bar button').forEach(b=>{const active=b.dataset.tab===tab;b.classList.toggle('on',active);if(active)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});scrollTo({top:0,behavior:'smooth'})}
+$('bar').addEventListener('click',e=>{const b=e.target.closest('button');if(b)go(b.dataset.tab)});
+
+/* ---- wish: form ---- */
+let mode='email',theme=null,lastBlobName='Diwali-Greeting.png';
+const validEmail=v=>/^[a-zA-Z0-9._%+-]+@gmail\.com$/i.test(v.trim());
+const validCC=v=>!v.trim()||v.split(',').every(x=>/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(x.trim()));
+const validPhone=v=>/^\+?[1-9]\d{7,14}$/.test(v.replace(/[\s()-]/g,''));
+function setHint(){$('hint').textContent=t(mode==='email'?'hintEmail':'hintWa')}
+function update(){const ok=$('greeting').value.trim()&&$('sender').value.trim()&&(mode==='email'?validEmail($('email').value)&&validCC($('cc').value):validPhone($('phone').value));$('sendBtn').disabled=!ok}
+function setMode(m){mode=m;$('tabEmail').classList.toggle('active',m==='email');$('tabWa').classList.toggle('active',m==='wa');$('fEmail').hidden=m!=='email';$('fPhone').hidden=m!=='wa';setHint();$('status').textContent='';update()}
+$('tabEmail').onclick=()=>setMode('email');$('tabWa').onclick=()=>setMode('wa');
+['sender','recipient','email','cc','phone','greeting'].forEach(id=>$(id).addEventListener('input',update));
+
+/* ---- wish: poster designs (random every preview) ---- */
+const PPAL=[{a:'#10091e',b:'#32163b',c:'#7a3827',g:'#ffd47b'},{a:'#07122b',b:'#17346b',c:'#5b2a86',g:'#ffe08a'},{a:'#2b0a1a',b:'#8a1c3c',c:'#e0762e',g:'#ffe3a1'},{a:'#07211f',b:'#0f5a52',c:'#1c2a5a',g:'#ffd98a'},{a:'#2a0f33',b:'#6a2a7a',c:'#d6457a',g:'#ffe0a0'},{a:'#2a1405',b:'#7a2f0e',c:'#f0a22e',g:'#fff0b5'}];
+const MOT=['diya','mandala','lanterns','fireworks','lotus','sunburst'];
+function newTheme(prev){let th,n=0;do{th={p:Math.floor(Math.random()*PPAL.length),m:MOT[Math.floor(Math.random()*MOT.length)],top:Math.random()>.5,frame:Math.floor(Math.random()*3),ital:Math.random()>.5,seed:Math.floor(Math.random()*1e9)}}while(prev&&(th.p===prev.p||th.m===prev.m)&&++n<30);return th}
+function cDiya(x,cx,cy,s){x.save();x.translate(cx,cy);x.scale(s,s);const g=x.createRadialGradient(0,-40,5,0,-40,170);g.addColorStop(0,'rgba(255,190,80,.55)');g.addColorStop(1,'rgba(255,190,80,0)');x.fillStyle=g;x.fillRect(-200,-220,400,400);
+ x.fillStyle='#ffe7a4';x.beginPath();x.ellipse(0,-4,72,11,0,0,7);x.fill();x.fillStyle='#c4622d';x.beginPath();x.moveTo(-72,-4);x.quadraticCurveTo(-62,48,0,50);x.quadraticCurveTo(62,48,72,-4);x.closePath();x.fill();
+ x.strokeStyle='#ffd47b';x.lineWidth=3;x.beginPath();x.moveTo(-58,8);x.quadraticCurveTo(0,26,58,8);x.stroke();
+ x.fillStyle='#ff9e42';x.beginPath();x.moveTo(0,-80);x.quadraticCurveTo(-20,-46,-9,-18);x.quadraticCurveTo(0,-9,9,-18);x.quadraticCurveTo(20,-46,0,-80);x.fill();
+ x.fillStyle='#fff3b0';x.beginPath();x.moveTo(0,-58);x.quadraticCurveTo(-8,-40,-4,-24);x.quadraticCurveTo(0,-19,4,-24);x.quadraticCurveTo(8,-40,0,-58);x.fill();x.restore()}
+function cMandala(x,cx,cy,s,P){const cols=[P.g,'#ff5a7a','#ff9e42','#7be0c3','#b57bff'];x.save();x.translate(cx,cy);x.scale(s,s);for(let k=0;k<4;k++){const n=8+k*4,Ln=240-k*55;for(let i=0;i<n;i++){x.save();x.rotate(i*2*Math.PI/n+k*.2);x.fillStyle=cols[(i+k)%5];x.globalAlpha=.92;x.beginPath();x.ellipse(0,-Ln/2,34-k*6,Ln/2,0,0,7);x.fill();x.restore()}}x.globalAlpha=1;for(let i=0;i<36;i++){const a=i*Math.PI/18;x.fillStyle=P.g;x.beginPath();x.arc(Math.cos(a)*272,Math.sin(a)*272,6,0,7);x.fill()}x.fillStyle='#fff3b0';x.beginPath();x.arc(0,0,28,0,7);x.fill();x.restore()}
+function cLantern(x,lx,ly,s,col,P){x.save();x.translate(lx,ly);x.scale(s,s);x.fillStyle=P.g;x.fillRect(-14,-10,28,10);x.fillStyle=col;x.beginPath();x.moveTo(-30,0);x.quadraticCurveTo(-50,42,-30,84);x.lineTo(30,84);x.quadraticCurveTo(50,42,30,0);x.closePath();x.fill();
+ x.strokeStyle='#ffe7a4';x.lineWidth=2;x.beginPath();x.moveTo(0,0);x.quadraticCurveTo(-22,42,0,84);x.quadraticCurveTo(22,42,0,0);x.stroke();x.fillStyle='rgba(255,243,176,.75)';x.beginPath();x.ellipse(0,42,12,22,0,0,7);x.fill();x.fillStyle=P.g;x.fillRect(-24,84,48,8);x.strokeStyle=P.g;x.lineWidth=3;x.beginPath();x.moveTo(-10,92);x.lineTo(-10,114);x.moveTo(0,92);x.lineTo(0,122);x.moveTo(10,92);x.lineTo(10,114);x.stroke();x.restore()}
+function cLanterns(x,cy,P){const cols=['#e8452c','#ffb23f','#b57bff','#ff5a7a','#2aa8a0'];x.strokeStyle=P.g;x.lineWidth=3;x.beginPath();x.moveTo(100,cy-255);x.quadraticCurveTo(600,cy-175,1100,cy-255);x.stroke();for(let i=0;i<5;i++){const lx=190+i*205,ly=cy-175+(i%2)*70;x.lineWidth=2;x.beginPath();x.moveTo(lx,cy-235+Math.abs(i-2)*-6);x.lineTo(lx,ly-10);x.stroke();cLantern(x,lx,ly,1.5,cols[i],P)}cDiya(x,600,cy+170,1.1)}
+function cFire(x,cx,cy,P,R){const cols=[P.g,'#ff7ab6','#7be0c3','#ffffff'];[[cx,cy-30,1.35],[cx-260,cy+60,.8],[cx+250,cy-90,.9],[cx+140,cy+150,.6]].forEach((b,k)=>{x.save();x.translate(b[0],b[1]);x.scale(b[2],b[2]);x.strokeStyle=x.fillStyle=cols[k%4];x.lineCap='round';x.lineWidth=4;x.shadowColor=cols[k%4];x.shadowBlur=18;for(let i=0;i<28;i++){const a=i*2*Math.PI/28,l2=90+(i%2)*45+R()*20;x.beginPath();x.moveTo(Math.cos(a)*40,Math.sin(a)*40);x.lineTo(Math.cos(a)*l2,Math.sin(a)*l2);x.stroke();x.beginPath();x.arc(Math.cos(a)*(l2+14),Math.sin(a)*(l2+14),4,0,7);x.fill()}x.restore()});cDiya(x,cx-20,cy+230,.7)}
+function cLotus(x,cx,cy,s,P){x.save();x.translate(cx,cy);x.scale(s,s);x.fillStyle='rgba(60,170,190,.35)';for(let i=0;i<3;i++){x.beginPath();x.ellipse(0,70,200-i*45,34-i*8,0,0,7);x.fill()}
+ [[-80,'#d8588a'],[80,'#d8588a'],[-55,'#ee6fa0'],[55,'#ee6fa0'],[-28,'#ff8fb8'],[28,'#ff8fb8'],[0,'#ffb3d1']].forEach(p=>{x.save();x.translate(0,60);x.rotate(p[0]*Math.PI/180);x.fillStyle=p[1];x.beginPath();x.ellipse(0,-100,38,104,0,0,7);x.fill();x.restore()});
+ const g=x.createRadialGradient(0,-40,4,0,-40,120);g.addColorStop(0,'rgba(255,230,150,.8)');g.addColorStop(1,'rgba(255,230,150,0)');x.fillStyle=g;x.fillRect(-140,-170,280,260);x.fillStyle=P.g;x.beginPath();x.arc(0,-30,16,0,7);x.fill();x.restore()}
+function cSun(x,cx,cy,P){x.save();x.strokeStyle=P.g;x.lineWidth=4;x.globalAlpha=.28;for(let i=0;i<48;i++){const a=i*2*Math.PI/48;x.beginPath();x.moveTo(cx+Math.cos(a)*150,cy+Math.sin(a)*150);x.lineTo(cx+Math.cos(a)*(i%2?270:310),cy+Math.sin(a)*(i%2?270:310));x.stroke()}x.globalAlpha=.6;x.lineWidth=3;x.beginPath();x.arc(cx,cy,135,0,7);x.stroke();x.restore();cDiya(x,cx,cy+40,1.5);cDiya(x,cx-215,cy+120,.8);cDiya(x,cx+215,cy+120,.8)}
+function wrap(ctx,text,max){const words=text.split(/\s+/),lines=[];let line='';for(const w of words){const test=line?line+' '+w:w;if(ctx.measureText(test).width>max&&line){lines.push(line);line=w}else line=test}if(line)lines.push(line);return lines}
+async function drawPoster(th){
+ try{await document.fonts.load("120px 'Cormorant Garamond'");await document.fonts.load("40px 'Noto Sans Tamil'")}catch(e){}
+ const cv=$('poster'),x=cv.getContext('2d'),P=PPAL[th.p],R=rng(th.seed),fam="'Cormorant Garamond','Noto Sans Tamil',Georgia,serif";
+ const name=$('sender').value.trim()||'—',to=$('recipient').value.trim(),msg=$('greeting').value.trim()||'Wishing you light, love and happiness this Diwali.';
+ x.setTransform(1,0,0,1,0,0);x.globalAlpha=1;x.shadowBlur=0;x.textAlign='center';
+ const g=x.createLinearGradient(0,0,1200,1500);g.addColorStop(0,P.a);g.addColorStop(.55,P.b);g.addColorStop(1,P.c);x.fillStyle=g;x.fillRect(0,0,1200,1500);
+ for(let i=0;i<22;i++){x.fillStyle=`rgba(255,200,110,${R()*.07+.02})`;x.beginPath();x.arc(R()*1200,R()*1500,R()*60+14,0,7);x.fill()}
+ for(let i=0;i<110;i++){x.fillStyle=`rgba(255,226,160,${R()*.7+.1})`;x.beginPath();x.arc(R()*1200,R()*1500,R()*2.6+.6,0,7);x.fill()}
+ x.strokeStyle=P.g;
+ if(th.frame===2){x.setLineDash([2,14]);x.lineWidth=6;x.lineCap='round';x.strokeRect(50,50,1100,1400);x.setLineDash([]);x.lineWidth=2;x.strokeRect(82,82,1036,1336)}
+ else{x.lineWidth=3;x.strokeRect(55,55,1090,1390);x.globalAlpha=.45;x.lineWidth=1;x.strokeRect(77,77,1046,1346);x.globalAlpha=1;if(th.frame===1){x.fillStyle=P.g;[[55,55],[1145,55],[55,1445],[1145,1445]].forEach(p=>{x.save();x.translate(p[0],p[1]);x.rotate(Math.PI/4);x.fillRect(-14,-14,28,28);x.restore()})}}
+ const A=th.top,cy=A?850:360;
+ if(th.m==='diya'){cDiya(x,600,cy+60,2.1)}else if(th.m==='mandala')cMandala(x,600,cy,.86,P);else if(th.m==='lanterns')cLanterns(x,cy+20,P);else if(th.m==='fireworks')cFire(x,600,cy,P,R);else if(th.m==='lotus')cLotus(x,600,cy+20,1.25,P);else cSun(x,600,cy-10,P);
+ const gold=x.createLinearGradient(300,0,900,0);gold.addColorStop(0,P.g);gold.addColorStop(.5,'#fff6d2');gold.addColorStop(1,P.g);
+ const kY=A?190:690,hY=A?345:805,dY=A?530:965,tY=A?615:1040;
+ x.fillStyle=P.g;x.font=`28px ${fam}`;x.fillText('✦   THE FESTIVAL OF LIGHTS   ✦',600,kY);
+ x.fillStyle='#fff0ce';x.font=`600 ${A?96:84}px ${fam}`;x.shadowColor=P.g;x.shadowBlur=24;x.fillText('Happy',600,hY);
+ x.fillStyle=gold;x.font=`${th.ital?'italic ':''}700 ${A?210:178}px ${fam}`;x.shadowBlur=36;x.fillText('Diwali',600,dY);x.shadowBlur=0;
+ x.fillStyle=P.g;x.font=`600 42px ${fam}`;x.fillText('இனிய தீபாவளி நல்வாழ்த்துகள்',600,tY);
+ x.fillStyle='#fff1d8';x.font=`italic 500 40px ${fam}`;const lines=wrap(x,msg,900);const shown=lines.slice(0,4);if(lines.length>4)shown[3]=shown[3].replace(/\s*\S*$/,'')+'…';shown.forEach((l,i)=>x.fillText(l,600,1150+i*54));
+ x.fillStyle=P.g;x.font=`600 36px ${fam}`;x.fillText((to?'For '+to+'  •  ':'')+'With love, '+name,600,1375);
+ return new Promise(res=>cv.toBlob(res,'image/png'))}
+function download(blob,name){const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),3000)}
+async function preview(){theme=newTheme(theme);await drawPoster(theme);$('posterWrap').hidden=false;$('status').textContent=t('st_prev');$('posterWrap').scrollIntoView({behavior:'smooth',block:'center'})}
+$('previewBtn').onclick=preview;$('anotherBtn').onclick=preview;
+$('dlBtn').onclick=async()=>{if(!theme)theme=newTheme();download(await drawPoster(theme),'Diwali-Greeting.png');$('status').textContent=t('st_dl')};
+$('sendBtn').onclick=async()=>{if($('sendBtn').disabled)return;if(!theme)theme=newTheme();
+ const sender=$('sender').value.trim(),to=$('recipient').value.trim(),msg=$('greeting').value.trim(),blob=await drawPoster(theme);$('posterWrap').hidden=false;
+ const file=new File([blob],'Diwali-Greeting.png',{type:'image/png'});
+ if(mode==='wa'){const number=$('phone').value.replace(/[\s()+-]/g,'');const text=encodeURIComponent(`Happy Diwali${to?', '+to:''}! ${msg}\n\nWith love, ${sender}`);
+  if(navigator.canShare&&navigator.canShare({files:[file]})){try{await navigator.share({files:[file],title:'Happy Diwali',text:`${msg} — ${sender}`});$('status').textContent=t('st_wa1');return}catch(e){if(e.name==='AbortError')return}}
+  download(blob,'Diwali-Greeting.png');window.open(`https://wa.me/${number}?text=${text}`,'_blank');$('status').textContent=t('st_wa2')}
+ else{const toEmail=$('email').value.trim(),cc=$('cc').value.trim();download(blob,'Diwali-Greeting.png');
+  const subject=encodeURIComponent('A Diwali wish for you ✨'),body=encodeURIComponent(`Dear ${to||'friend'},\n\n${msg}\n\nWith warm wishes,\n${sender}\n\nYour Diwali greeting poster was downloaded as Diwali-Greeting.png. Please attach it to this email before sending.`);
+  window.location.href=`mailto:${encodeURIComponent(toEmail)}?${cc?'cc='+encodeURIComponent(cc)+'&':''}subject=${subject}&body=${body}`;$('status').textContent=t('st_mail')}};
+
+setLang('en');setMode('email');
+</script>
+</body>
+</html>
